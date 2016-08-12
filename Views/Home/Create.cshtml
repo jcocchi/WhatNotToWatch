@@ -1,0 +1,44 @@
+﻿@using WhatNotToWatch.Models
+@model WhatNotToWatch.Models.TVShow
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> Create </title>
+</head>
+<body>
+    <h1>Create</h1>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(m => m.Name)
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Genre)
+            @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))
+            @Html.ValidationMessageFor(m => m.Genre)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Rating)
+            @Html.TextBoxFor(m => m.Rating)
+            @Html.ValidationMessageFor(m => m.Rating)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Review)
+            @Html.EditorFor(m => m.Review)
+            @Html.ValidationMessageFor(m => m.Review)
+        </div>
+
+        <div>
+            <input type="submit" value="Save" />
+            <input type="button" value="Back" href="Index.cshtml"/>
+            @Html.ActionLink("Back", "Index")
+        </div>
+    }
+</body>
+</html>
