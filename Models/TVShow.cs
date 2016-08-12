@@ -7,12 +7,17 @@ namespace WhatNotToWatch.Models
     public class TVShow
     {
         public int ID { get; set; }
+
         [Required]
+        [Display(Name = "TV Show Name")]
         public string Name { get; set; }
+
         public Genre Genre { get; set; }
+
         [Required]
         [Range(1,5)]
         public int Rating { get; set; }
+
         [MaxLength(300)]
         public string Review { get; set; }
     }

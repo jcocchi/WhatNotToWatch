@@ -30,9 +30,14 @@ label {
 }
 
 textarea {
-    max-width: 174px;
-    min-width: 174px;
+    max-width: 175px;
+    min-width: 175px;
+    max-height: 250px;
     resize: vertical;
+}
+
+.required {
+    color: red;
 }
 
 /* Wrapping element */

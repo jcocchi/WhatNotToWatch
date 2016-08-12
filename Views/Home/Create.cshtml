@@ -12,29 +12,30 @@
     {
         <div class="createShowTable">
             <p>
-                @Html.LabelFor(m => m.Name)
-                @Html.EditorFor(m => m.Name)
-                @Html.ValidationMessageFor(m => m.Name)
+                @Html.LabelFor(m => m.Name)<span class="required">* &nbsp;</span>
+                @Html.EditorFor(m => m.Name)<br/>
+                <span class="required">@Html.ValidationMessageFor(m => m.Name)</span>
             </p>
 
             <p>
-                @Html.LabelFor(m => m.Genre)
-                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))
-                @Html.ValidationMessageFor(m => m.Genre)
+                @Html.LabelFor(m => m.Genre) &nbsp;&nbsp;
+                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))<br/>
+                <span class="required">@Html.ValidationMessageFor(m => m.Genre)</span>
             </p>
 
             <p>
-                @Html.LabelFor(m => m.Rating)
-                @Html.TextBoxFor(m => m.Rating)
-                @Html.ValidationMessageFor(m => m.Rating)
+                @Html.LabelFor(m => m.Rating)<span class="required">* &nbsp;</span>
+                @Html.TextBoxFor(m => m.Rating)<br/>
+                <span class="required">@Html.ValidationMessageFor(m => m.Rating)</span>
             </p>
 
             <p>
-                @Html.LabelFor(m => m.Review)
-                @Html.TextAreaFor(m => m.Review)
-                @Html.ValidationMessageFor(m => m.Review)
+                @Html.LabelFor(m => m.Review) &nbsp;&nbsp;
+                @Html.TextAreaFor(m => m.Review)<br/>
+                <span class="required">@Html.ValidationMessageFor(m => m.Review)</span>
             </p><br>
         </div>
+
         <div>
             <input type="submit" value="Save" class="btn btn-default" /> &nbsp;
             <a href="/" class="btn btn-default">Back</a>
