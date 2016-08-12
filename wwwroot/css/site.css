@@ -3,14 +3,36 @@
     padding-bottom: 20px;
 }
 
-h1{
+h1 {
     text-align: center;
     color: #581845;
     font-weight: bolder;
 }
 
-h2{
+h2 {
     color: #34495E;
+}
+
+.createShowTable  {
+    display: table;     
+}
+
+p { 
+    display: table-row;  
+}
+
+label { 
+    display: table-cell;
+    color: #34495E; 
+    text-align: right; 
+    padding-right: 5px;
+    padding-bottom: 15px;
+}
+
+textarea {
+    max-width: 174px;
+    min-width: 174px;
+    resize: vertical;
 }
 
 /* Wrapping element */

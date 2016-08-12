@@ -3,40 +3,41 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Create </title>
+    <title> Add TV Show Review </title>
 </head>
 <body>
-    <h1>Create</h1>
+    <h1>Add TV Show Review</h1>
 
     @using (Html.BeginForm())
     {
-        <div>
-            @Html.LabelFor(m => m.Name)
-            @Html.EditorFor(m => m.Name)
-            @Html.ValidationMessageFor(m => m.Name)
-        </div>
+        <div class="createShowTable">
+            <p>
+                @Html.LabelFor(m => m.Name)
+                @Html.EditorFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </p>
 
-        <div>
-            @Html.LabelFor(m => m.Genre)
-            @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))
-            @Html.ValidationMessageFor(m => m.Genre)
-        </div>
+            <p>
+                @Html.LabelFor(m => m.Genre)
+                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))
+                @Html.ValidationMessageFor(m => m.Genre)
+            </p>
 
-        <div>
-            @Html.LabelFor(m => m.Rating)
-            @Html.TextBoxFor(m => m.Rating)
-            @Html.ValidationMessageFor(m => m.Rating)
-        </div>
+            <p>
+                @Html.LabelFor(m => m.Rating)
+                @Html.TextBoxFor(m => m.Rating)
+                @Html.ValidationMessageFor(m => m.Rating)
+            </p>
 
-        <div>
-            @Html.LabelFor(m => m.Review)
-            @Html.EditorFor(m => m.Review)
-            @Html.ValidationMessageFor(m => m.Review)
+            <p>
+                @Html.LabelFor(m => m.Review)
+                @Html.TextAreaFor(m => m.Review)
+                @Html.ValidationMessageFor(m => m.Review)
+            </p><br>
         </div>
-
         <div>
-            <input type="submit" value="Save" class="btn btn-default" />
-            <a href="/" class="btn btn-default" >Back</a>
+            <input type="submit" value="Save" class="btn btn-default" /> &nbsp;
+            <a href="/" class="btn btn-default">Back</a>
         </div>
     }
 </body>
