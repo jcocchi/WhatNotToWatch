@@ -3,35 +3,35 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Add TV Show Review </title>
+    <title> Edit </title>
 </head>
 <body>
-    <h1>Add TV Show Review</h1>
+    <h1>Edit</h1>
 
     @using (Html.BeginForm())
     {
         <div class="createShowTable">
             <p>
                 @Html.LabelFor(m => m.Name)<span class="required">* &nbsp;</span>
-                @Html.EditorFor(m => m.Name)<br/>
+                @Html.EditorFor(m => m.Name)<br />
                 <span class="required">@Html.ValidationMessageFor(m => m.Name)</span>
             </p>
 
             <p>
                 @Html.LabelFor(m => m.Genre) &nbsp;&nbsp;
-                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))<br/>
+                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))<br />
                 <span class="required">@Html.ValidationMessageFor(m => m.Genre)</span>
             </p>
 
             <p>
                 @Html.LabelFor(m => m.Rating)<span class="required">* &nbsp;</span>
-                @Html.TextBoxFor(m => m.Rating)<br/>
+                @Html.TextBoxFor(m => m.Rating)<br />
                 <span class="required">@Html.ValidationMessageFor(m => m.Rating)</span>
             </p>
 
             <p>
                 @Html.LabelFor(m => m.Review) &nbsp;&nbsp;
-                @Html.TextAreaFor(m => m.Review)<br/>
+                @Html.TextAreaFor(m => m.Review)<br />
                 <span class="required">@Html.ValidationMessageFor(m => m.Review)</span>
             </p><br>
         </div>

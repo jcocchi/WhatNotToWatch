@@ -20,6 +20,9 @@ namespace WhatNotToWatch.Models
 
         [MaxLength(300)]
         public string Review { get; set; }
+
+        /*[Range(-5, int.MaxValue)]
+        public int Vote { get; set; }*/
     }
 
 }

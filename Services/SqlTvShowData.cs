@@ -30,5 +30,10 @@ namespace WhatNotToWatch.Services
         {
             return _context.TVShows.ToList();
         }
+ 
+        public int Update()
+        {
+            return _context.SaveChanges();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace WhatNotToWatch.Services
         IEnumerable<TVShow> GetAll();
         TVShow Get(int id);
         void Add(TVShow newTvShow);
+        int Update();
     }
 
 }

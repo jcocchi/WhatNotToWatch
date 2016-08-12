@@ -37,6 +37,33 @@ namespace WhatNotToWatch.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var model = _tvShowData.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(TVShow input)
+        {
+            var tvShow = _tvShowData.Get(input.ID);
+
+            if (tvShow != null && ModelState.IsValid)
+            {
+                tvShow.Name = input.Name;
+                _tvShowData.Update();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(tvShow);
+        }
+
         public IActionResult Index_Default()
         {
             return View();
