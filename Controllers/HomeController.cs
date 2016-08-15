@@ -3,6 +3,7 @@ using System.Linq;
 using WhatNotToWatch.Models;
 using WhatNotToWatch.Services;
 using System;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace WhatNotToWatch.Controllers
 {
@@ -53,8 +54,9 @@ namespace WhatNotToWatch.Controllers
         public IActionResult Edit(TVShow input)
         {
             var tvShow = _tvShowData.Get(input.ID);
+            ModelValidationState isValid = ModelState.GetValidationState("Vote");
 
-            if (tvShow != null)
+            if (tvShow != null && isValid.Equals(ModelValidationState.Valid))
             {
                 tvShow.Vote = input.Vote;
 
