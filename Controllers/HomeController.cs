@@ -2,6 +2,7 @@
 using System.Linq;
 using WhatNotToWatch.Models;
 using WhatNotToWatch.Services;
+using System;
 
 namespace WhatNotToWatch.Controllers
 {
@@ -56,12 +57,24 @@ namespace WhatNotToWatch.Controllers
             if (tvShow != null)
             {
                 tvShow.Vote = input.Vote;
-                _tvShowData.Update();
 
+                if(tvShow.Vote <= -5)
+                {
+                    Delete(tvShow);
+                }
+
+                _tvShowData.Update();
+                
                 return RedirectToAction("Index");
             }
 
             return View(tvShow);
+        }
+
+        
+        private void Delete(TVShow showToDelete)
+        {
+            _tvShowData.Delete(showToDelete);
         }
 
         public IActionResult Index_Default()

@@ -21,6 +21,11 @@ namespace WhatNotToWatch.Services
             _context.SaveChanges();
         }
 
+        public void Delete(TVShow showToDelete)
+        {
+            _context.Remove(showToDelete);
+        }
+
         public TVShow Get(int id)
         {
             return _context.TVShows.FirstOrDefault(t => t.ID == id);
