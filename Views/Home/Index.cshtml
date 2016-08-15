@@ -20,19 +20,19 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.ActionLink("Show Name", "Index", new { sortOrder = ViewData["NameSortParam"] })
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Genre)
+                    @Html.ActionLink("Genre", "Index", new { sortOrder = ViewData["GenreSortParam"] })
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Rating)
+                    @Html.ActionLink("Rating", "Index", new { sortOrder = ViewData["RatingSortParam"] })
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Review)
                 </th>
                 <th>
-                    Votes for this Review
+                    @Html.ActionLink("Votes for this Review", "Index", new { sortOrder = ViewData["VoteSortParam"] })
                 </th>
             </tr>
 

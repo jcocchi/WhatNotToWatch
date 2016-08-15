@@ -16,9 +16,44 @@ namespace WhatNotToWatch.Controllers
             _tvShowData = tvData;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string sortOrder)
         {
-            return View(_tvShowData.GetAll());
+            ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["GenreSortParam"] = sortOrder == "Genre" ? "genre_desc" : "Genre";
+            ViewData["RatingSortParam"] = sortOrder == "Rating" ? "rating_desc" : "Rating";
+            ViewData["VoteSortParam"] = sortOrder == "Vote" ? "vote_desc" : "Vote";
+
+            var shows = from s in _tvShowData.GetAll() select s;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    shows = shows.OrderByDescending(s => s.Name);
+                    break;
+                case "Genre":
+                    shows = shows.OrderBy(s => s.Genre);
+                    break;
+                case "genre_desc":
+                    shows = shows.OrderByDescending(s => s.Genre);
+                    break;
+                case "Rating":
+                    shows = shows.OrderBy(s => s.Rating);
+                    break;
+                case "rating_desc":
+                    shows = shows.OrderByDescending(s => s.Rating);
+                    break;
+                case "Vote":
+                    shows = shows.OrderBy(s => s.Vote);
+                    break;
+                case "vote_desc":
+                    shows = shows.OrderByDescending(s => s.Vote);
+                    break;
+                default:
+                    shows = shows.OrderBy(s => s.Name);
+                    break;
+            }
+
+            return View(shows.ToList());
         }
 
         [HttpGet]
