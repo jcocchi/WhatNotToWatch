@@ -30,11 +30,12 @@
             Sometimes TV shows aren't great, and sometimes reviews of TV shows aren't great either. Tell us what you think of this review!
         </h5>
         <div class="voting">
-            <input asp-for="Vote" type="radio" name="vote" value=1 />
-            <button><img src="~/images/ThumbsUp.png" class="votingImage" /></button><br /><br />
+            
+            <input asp-for="Vote" type="radio" name="vote" value=@(Model.Vote + 1) />
+            <img src="~/images/ThumbsUp.png" class="votingImage" /><br /><br />
            
-            <input asp-for="Vote" type="radio" name="vote" value=2 />
-            <button><img src="~/images/ThumbsDown.png" class="votingImage" /></button>
+            <input asp-for="Vote" type="radio" name="vote" value=@(Model.Vote - 1) />
+            <img src="~/images/ThumbsDown.png" class="votingImage" />
         </div>
 
         <div><br />
