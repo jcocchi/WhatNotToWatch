@@ -39,7 +39,7 @@
             @foreach (var tvshow in Model)
             {
                 <tr>
-                    <td>
+                    <td class="showName">
                         @Html.DisplayFor(modelItem => tvshow.Name)
                     </td>
                     <td>
@@ -48,7 +48,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => tvshow.Rating)
                     </td>
-                    <td>
+                    <td class="review">
                         @Html.DisplayFor(modelItem => tvshow.Review)
                     </td>
                     <td>

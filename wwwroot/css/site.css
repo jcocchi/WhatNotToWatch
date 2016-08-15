@@ -26,6 +26,14 @@ p {
     display: table-row;  
 }
 
+.showName {
+    max-width: 100px;
+}
+
+.review {
+    max-width: 375px;
+}
+
 label { 
     display: table-cell;
     color: #34495E; 
