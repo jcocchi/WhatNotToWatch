@@ -8,7 +8,12 @@
 
 <div class="row">
     <div class="col-lg-12"> <h2>Write a New Review</h2> </div>
-    @Html.ActionLink("Add Review", "Create")
+    <h5>
+        There are a lot of great TV Shows out there, but there are even more TV shows that aren't worth the time to watch.
+        Let us know what you think by adding a review! 
+        But be careful, anyone can vote on the quality of your review and if the vote count reaches "-5" your review will be removed.
+    </h5><br />
+    <a asp-action="Create" class="btn btn-default">Add Review</a>
 </div>
 <div class="row">
     <div class="col-lg-12"> <h2>Browse Reviews</h2> 
