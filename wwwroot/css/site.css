@@ -26,12 +26,21 @@ p {
     display: table-row;  
 }
 
-.showName {
-    max-width: 100px;
+.showNameCol {
+    max-width: 125px;
 }
 
-.review {
-    max-width: 375px;
+.reviewCol {
+    max-width: 450px;
+}
+
+.votesCol {
+    max-width: 70px;
+    text-align: center;
+}
+
+.centerCol {
+    text-align: center;
 }
 
 label { 
