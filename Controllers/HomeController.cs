@@ -4,6 +4,11 @@ using WhatNotToWatch.Models;
 using WhatNotToWatch.Services;
 using System;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Text;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WhatNotToWatch.Controllers
 {
@@ -63,15 +68,54 @@ namespace WhatNotToWatch.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TVShow tvShow)
+        public async Task<IActionResult> Create(TVShow tvShow)
         {
             if (ModelState.IsValid)
             {
+                // Calculate "Rating" by calling to MS Cognitve Services Text Analytics API 
+                String results= await MakeRequest(tvShow.Review);
+                System.Diagnostics.Debug.WriteLine("RESULTS: " + results);
+
                 _tvShowData.Add(tvShow);
 
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        private async Task<String> MakeRequest(string review)
+        {
+            //var client = new WebClient(); System.Net
+            var client = new HttpClient();
+            var queryString = Request.Query;
+
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "4b2610a638a04140baf45aa53f8f5ba3"); 
+
+var uri = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment?" + queryString;
+
+            // Format body
+            var jsonPrepend = "{\n \t \"documents\": [ \n\t\t {  \n\t\t\t \"language\": \"en\", \n\t\t\t \"id\" : \"1\", \n\t\t\t \"text\": \"";
+            var jsonAppend = "\" \n\t\t } \n\t ] \n }";
+
+            System.Diagnostics.Debug.WriteLine("JSON REQUEST: " + jsonPrepend + review + jsonAppend);
+
+            HttpResponseMessage response; 
+
+            // Request body
+            byte[] byteData = Encoding.UTF8.GetBytes(jsonPrepend + review + jsonAppend);
+
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                response = await client.PostAsync(uri, content);
+            }
+
+            // Convert response to string
+            HttpContent results = response.Content;
+            var res1 = await results.ReadAsStringAsync();
+
+            return res1;
         }
 
         [HttpGet]
@@ -81,7 +125,7 @@ namespace WhatNotToWatch.Controllers
             if (model == null)
             {
                 return RedirectToAction("Index");
-            }
+            } 
             return View(model);
         }
 
