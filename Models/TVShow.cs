@@ -9,20 +9,19 @@ namespace WhatNotToWatch.Models
         public int ID { get; set; }
 
         [Required]
-        [Display(Name = "TV Show Name")]
+        [Display(Name = "Show Name")]
         public string Name { get; set; }
 
         public Genre Genre { get; set; }
 
         [Required]
-        [Range(1,5)]
+        [Display(Name = "Show Rating"), Range(1,5)]
         public int Rating { get; set; }
 
         [MaxLength(300)]
         public string Review { get; set; }
 
-        /*[Range(-5, int.MaxValue)]
-        public int Vote { get; set; }*/
+        public int Vote { get; set; }
     }
 
 }

@@ -13,6 +13,11 @@ h2 {
     color: #34495E;
 }
 
+h5 {
+    color: #34495E;
+    font-weight: bolder;
+}
+
 .createShowTable  {
     display: table;     
 }
@@ -39,6 +44,18 @@ textarea {
 .required {
     color: red;
 }
+
+.voting{
+    padding-left: 20px;
+}
+
+.votingImage {
+    max-height: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    min-width: 50px;
+}
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

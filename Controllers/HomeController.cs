@@ -53,9 +53,9 @@ namespace WhatNotToWatch.Controllers
         {
             var tvShow = _tvShowData.Get(input.ID);
 
-            if (tvShow != null && ModelState.IsValid)
+            if (tvShow != null)
             {
-                tvShow.Name = input.Name;
+                tvShow.Vote = input.Vote;
                 _tvShowData.Update();
 
                 return RedirectToAction("Index");

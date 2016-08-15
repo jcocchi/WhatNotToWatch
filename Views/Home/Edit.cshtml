@@ -1,42 +1,43 @@
 ﻿@using WhatNotToWatch.Models
-@model WhatNotToWatch.Models.TVShow
+@model TVShow
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Edit </title>
+    <title> Vote on Review </title>
 </head>
 <body>
-    <h1>Edit</h1>
+    <h1> Vote on Review </h1>
+
+    <p>
+        @Html.LabelFor(m => m.Name) @Model.Name
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Genre) @Model.Genre
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Rating) @Model.Rating
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Review) @Model.Review
+    </p><br>
 
     @using (Html.BeginForm())
     {
-        <div class="createShowTable">
-            <p>
-                @Html.LabelFor(m => m.Name)<span class="required">* &nbsp;</span>
-                @Html.EditorFor(m => m.Name)<br />
-                <span class="required">@Html.ValidationMessageFor(m => m.Name)</span>
-            </p>
-
-            <p>
-                @Html.LabelFor(m => m.Genre) &nbsp;&nbsp;
-                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))<br />
-                <span class="required">@Html.ValidationMessageFor(m => m.Genre)</span>
-            </p>
-
-            <p>
-                @Html.LabelFor(m => m.Rating)<span class="required">* &nbsp;</span>
-                @Html.TextBoxFor(m => m.Rating)<br />
-                <span class="required">@Html.ValidationMessageFor(m => m.Rating)</span>
-            </p>
-
-            <p>
-                @Html.LabelFor(m => m.Review) &nbsp;&nbsp;
-                @Html.TextAreaFor(m => m.Review)<br />
-                <span class="required">@Html.ValidationMessageFor(m => m.Review)</span>
-            </p><br>
+        <h5>
+            Sometimes TV shows aren't great, and sometimes reviews of TV shows aren't great either. Tell us what you think of this review!
+        </h5>
+        <div class="voting">
+            <input asp-for="Vote" type="radio" name="vote" value=1 />
+            <button><img src="~/images/ThumbsUp.png" class="votingImage" /></button><br /><br />
+           
+            <input asp-for="Vote" type="radio" name="vote" value=2 />
+            <button><img src="~/images/ThumbsDown.png" class="votingImage" /></button>
         </div>
 
-        <div>
+        <div><br />
             <input type="submit" value="Submit" class="btn btn-default" /> &nbsp;
             <a asp-action="Index" class="btn btn-default">Back</a>
         </div>
