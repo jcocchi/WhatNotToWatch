@@ -14,8 +14,7 @@ namespace WhatNotToWatch.Models
 
         public Genre Genre { get; set; }
 
-        [Required]
-        [Display(Name = "Show Rating"), Range(1,5)]
+        [Display(Name = "Show Rating"), Range(0,10)]
         public int Rating { get; set; }
 
         [MaxLength(300)]

@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using WhatNotToWatch.App_Code;
 
 namespace WhatNotToWatch.Controllers
 {
@@ -76,11 +77,84 @@ namespace WhatNotToWatch.Controllers
                 String results= await MakeRequest(tvShow.Review);
                 System.Diagnostics.Debug.WriteLine("RESULTS: " + results);
 
+                // Parse response and select rating score
+                int rating = ParseResponse(results);
+                System.Diagnostics.Debug.WriteLine("RATING: " + rating);
+
+                // If there was a problem with the rating assignment take the user back to the Create page to try again
+                if (rating == 0)
+                {
+                    return View();
+                }
+
+                // Otherwise set the rating and add the show to the DB
+                tvShow.Rating = rating;
                 _tvShowData.Add(tvShow);
 
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        private int ParseResponse(string results)
+        {
+            // JSON object to store API response
+            ReviewResponse review = new ReviewResponse();
+            double ratingRaw = -1;
+            int rating = -1;
+
+            // Populate a JSON object with the results of the API call
+            JsonConvert.PopulateObject(results, review);
+
+            ratingRaw = review.getScore();
+
+            // Check if the raw rating came back correctly from the API and assign a rating from 1-10
+            if (ratingRaw == -1)
+            {
+                rating = 0; // A rating of 0 indicates that the API returned an error
+            }
+            else if (ratingRaw == 1)
+            {
+                rating = 10;
+            }
+            else if (ratingRaw > .9)
+            {
+                rating = 9;
+            }
+            else if (ratingRaw > .8)
+            {
+                rating = 8;
+            }
+            else if (ratingRaw > .7)
+            {
+                rating = 7;
+            }
+            else if (ratingRaw > .6)
+            {
+                rating = 6;
+            }
+            else if (ratingRaw > .5)
+            { 
+                rating = 5;
+            }
+            else if (ratingRaw > .4)
+            {
+                rating = 4;
+            }
+            else if (ratingRaw > .3)
+            {
+                rating = 3;
+            }
+            else if (ratingRaw > .2)
+            {
+                rating = 2;
+            }
+            else
+            {
+                rating = 1;
+            }
+
+            return rating;
         }
 
         private async Task<String> MakeRequest(string review)
