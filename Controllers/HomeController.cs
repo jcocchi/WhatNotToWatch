@@ -26,8 +26,8 @@ namespace WhatNotToWatch.Controllers
         {
             ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["GenreSortParam"] = sortOrder == "Genre" ? "genre_desc" : "Genre";
-            ViewData["RatingSortParam"] = sortOrder == "Rating" ? "rating_desc" : "Rating";
-            ViewData["VoteSortParam"] = sortOrder == "Vote" ? "vote_desc" : "Vote";
+            ViewData["RatingSortParam"] = sortOrder == "rating_desc" ? "Rating" : "rating_desc";
+            ViewData["VoteSortParam"] = sortOrder == "vote_desc" ? "Vote" : "vote_desc";
 
             var shows = from s in _tvShowData.GetAll() select s;
 
@@ -91,7 +91,7 @@ namespace WhatNotToWatch.Controllers
                 tvShow.Rating = rating;
                 _tvShowData.Add(tvShow);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", tvShow);
             }
             return View();
         }
@@ -190,6 +190,16 @@ var uri = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentim
             var res1 = await results.ReadAsStringAsync();
 
             return res1;
+        }
+
+        [HttpGet]
+        public IActionResult Details(TVShow model)
+        {
+            if (model == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
         [HttpGet]
