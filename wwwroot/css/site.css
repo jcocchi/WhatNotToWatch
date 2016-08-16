@@ -13,9 +13,10 @@ h2 {
     color: #34495E;
 }
 
-h5 {
+.otherText {
     color: #34495E;
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .createShowTable  {
@@ -23,7 +24,14 @@ h5 {
 }
 
 p { 
-    display: table-row;  
+    display: table-row; 
+    padding-bottom: 10px; 
+}
+
+.ratingSpan {
+    padding-left: 10px;
+    display: table-cell;
+    clear: both;
 }
 
 .showNameCol {

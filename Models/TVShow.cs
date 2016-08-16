@@ -17,6 +17,7 @@ namespace WhatNotToWatch.Models
         [Display(Name = "Show Rating"), Range(0,10)]
         public int Rating { get; set; }
 
+        [Required]
         [MaxLength(300)]
         public string Review { get; set; }
 

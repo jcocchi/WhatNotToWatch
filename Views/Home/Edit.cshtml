@@ -26,9 +26,9 @@
 
     @using (Html.BeginForm())
     {
-        <h5>
+        <div class="otherText">
             Sometimes TV shows aren't great, and sometimes reviews of TV shows aren't great either. Tell us what you think of this review!
-        </h5>
+        </div>
         <div class="voting">
             
             <input asp-for="Vote" type="radio" name="vote" value=@(Model.Vote + 1) />
