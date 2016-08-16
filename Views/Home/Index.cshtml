@@ -16,7 +16,18 @@
     <a asp-action="Create" class="btn btn-default">Add Review</a>
 </div>
 <div class="row">
-    <div class="col-lg-12"> <h2>Browse Reviews</h2> 
+    <div class="col-lg-12">
+        <h2>Browse Reviews</h2> 
+
+        @using (Html.BeginForm())
+        {
+            <p>
+                Find reviews by show name: @Html.TextBox("SearchString") &nbsp;
+                <input type="submit" value="Search" class="btn btn-default"/> 
+            </p>
+            <br/>
+        }
+
         <table class="table">
             <tr>
                 <th class="centerCol">

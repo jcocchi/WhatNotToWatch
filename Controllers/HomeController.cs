@@ -22,7 +22,7 @@ namespace WhatNotToWatch.Controllers
             _tvShowData = tvData;
         }
 
-        public IActionResult Index(string sortOrder)
+        public IActionResult Index(string sortOrder, string searchString)
         {
             ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["GenreSortParam"] = sortOrder == "Genre" ? "genre_desc" : "Genre";
@@ -30,6 +30,11 @@ namespace WhatNotToWatch.Controllers
             ViewData["VoteSortParam"] = sortOrder == "vote_desc" ? "Vote" : "vote_desc";
 
             var shows = from s in _tvShowData.GetAll() select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                shows = shows.Where(s => s.Name.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
