@@ -113,7 +113,7 @@ namespace WhatNotToWatch.Controllers
             {
                 rating = 0; // A rating of 0 indicates that the API returned an error
             }
-            else if (ratingRaw == 1)
+            else if (ratingRaw > .95)
             {
                 rating = 10;
             }
