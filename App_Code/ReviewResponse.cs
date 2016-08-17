@@ -34,7 +34,7 @@ namespace WhatNotToWatch.App_Code
 
         public double getScore()
         {
-            if (documents.Count >= 1)
+            if (documents != null && documents.Count >= 1)
             {
                 return documents[0].score;
             }

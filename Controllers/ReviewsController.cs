@@ -178,6 +178,15 @@ namespace WhatNotToWatch.Controllers
             // Format body
             var jsonPrepend = "{\n \t \"documents\": [ \n\t\t {  \n\t\t\t \"language\": \"en\", \n\t\t\t \"id\" : \"1\", \n\t\t\t \"text\": \"";
             var jsonAppend = "\" \n\t\t } \n\t ] \n }";
+            // Ensure there are no reserved characters in the string submitted by the user
+            // If there are, replace them with the proper character before converting to JSON
+            if (review.Contains("\\"))
+            {
+                review = review.Replace("\\", "\\\\");
+            }
+            if (review.Contains("\"")){
+                review= review.Replace("\"", "\\\"");
+            }
 
             System.Diagnostics.Debug.WriteLine("JSON REQUEST: " + jsonPrepend + review + jsonAppend);
 
