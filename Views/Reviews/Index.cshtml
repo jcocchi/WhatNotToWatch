@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WhatNotToWatch.Models.TVShow>
+
+@{
+    ViewData["Title"] = "What Not To Watch";
+}
+
+<h1>Browse Reviews</h1>
+
+<div class="col-lg-12">
+    <a asp-controller="Reviews" asp-action="Create" class="btn btn-default">Add Review</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-default">Back to Home</a>
+    
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find reviews by show name: @Html.TextBox("SearchString") &nbsp;
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+        <br />
+    }
+
+    <table class="table">
+        <tr>
+            <th class="centerCol">
+                @Html.ActionLink("TV Show Name", "Index", new { sortOrder = ViewData["NameSortParam"] })
+            </th>
+            <th class="centerCol">
+                @Html.ActionLink("Genre", "Index", new { sortOrder = ViewData["GenreSortParam"] })
+            </th>
+            <th class="centerCol">
+                @Html.ActionLink("Rating", "Index", new { sortOrder = ViewData["RatingSortParam"] })
+            </th>
+            <th class="centerCol">
+                @Html.DisplayNameFor(model => model.Review)
+            </th>
+            <th class="centerCol">
+                @Html.ActionLink("Votes for Review", "Index", new { sortOrder = ViewData["VoteSortParam"] })
+            </th>
+        </tr>
+
+        @foreach (var tvshow in Model)
+        {
+            <tr>
+                <td class="showNameCol">
+                    @Html.DisplayFor(modelItem => tvshow.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => tvshow.Genre)
+                </td>
+                <td class="centerCol">
+                    @Html.DisplayFor(modelItem => tvshow.Rating)
+                </td>
+                <td class="reviewCol">
+                    @Html.DisplayFor(modelItem => tvshow.Review)
+                </td>
+                <td class="votesCol">
+                    <a asp-action="Edit" asp-route-id="@tvshow.ID">@tvshow.Vote</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

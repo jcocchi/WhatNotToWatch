@@ -1,0 +1,48 @@
+﻿@using WhatNotToWatch.Models
+@model WhatNotToWatch.Models.TVShow
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> Add TV Show Review </title>
+</head>
+<body>
+    <h1>Add TV Show Review</h1>
+
+    @using (Html.BeginForm())
+    {
+        <div class="createShowTable">
+            <p>
+                @Html.LabelFor(m => m.Name) <span class="required">* &nbsp;</span>
+                @Html.EditorFor(m => m.Name)<br/>
+                <span class="required">@Html.ValidationMessageFor(m => m.Name)</span>
+            </p>
+
+            <p>
+                @Html.LabelFor(m => m.Genre) &nbsp;&nbsp;
+                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))<br/>
+                <span class="required">@Html.ValidationMessageFor(m => m.Genre)</span>
+            </p>
+
+            <p>
+                @Html.LabelFor(m => m.Rating)
+                <span class="ratingSpan">
+                    Thinking of numbers is hard, so we'll do it for you! <br />
+                    Your rating will be auto generated based on your review by the <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="_blank">Text Analyitics API</a> from Microsoft Cognitive Services.
+                    You're welcome. <br /><br />
+                </span>
+            </p>
+
+            <p>
+                @Html.LabelFor(m => m.Review) <span class="required">* &nbsp;</span>
+                @Html.TextAreaFor(m => m.Review)<br/>
+                <span class="required">@Html.ValidationMessageFor(m => m.Review)</span>
+            </p><br>
+        </div>
+
+        <div>
+            <input type="submit" value="Submit" class="btn btn-default" /> &nbsp;
+            <a asp-action="Index" class="btn btn-default">Back</a>
+        </div>
+    }
+</body>
+</html>
