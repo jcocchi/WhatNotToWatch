@@ -13,14 +13,47 @@ h2 {
     color: #34495E;
 }
 
+.homeText {
+    color: #34495E;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.homeImgSpan {
+    text-align: center;
+}
+
+.homeImg {
+    max-height: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    min-width: 300px;
+}
+
 .otherText {
     color: #34495E;
     font-weight: bold;
     font-size: 14px;
 }
 
+.homeBtns {
+    text-align: center;
+}
+
 .createShowTable  {
     display: table;     
+}
+
+.required {
+    color: red;
+}
+
+.createImg {
+    max-height: 300px;
+    min-height: 300px;
+    max-width: 400px;
+    min-width: 400px;
 }
 
 p { 
@@ -64,10 +97,6 @@ textarea {
     min-width: 175px;
     max-height: 250px;
     resize: vertical;
-}
-
-.required {
-    color: red;
 }
 
 .voting{

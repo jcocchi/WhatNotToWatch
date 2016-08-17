@@ -9,7 +9,6 @@ namespace WhatNotToWatch.Models
         public int ID { get; set; }
 
         [Required]
-        [Display(Name = "TV Show Name")]
         public string Name { get; set; }
 
         public Genre Genre { get; set; }

@@ -2155,6 +2155,32 @@
           }
         }
       },
+      "Sakura.AspNetCore.Mvc.PagedList/2.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
+          "Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
+          "Sakura.AspNetCore.PagedList.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Sakura.AspNetCore.Mvc.PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Sakura.AspNetCore.Mvc.PagedList.dll": {}
+        }
+      },
+      "Sakura.AspNetCore.PagedList.Abstractions/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/Sakura.AspNetCore.PagedList.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Sakura.AspNetCore.PagedList.Abstractions.dll": {}
+        }
+      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -5925,6 +5951,30 @@
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.4.0.1.nupkg.sha512",
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.nuspec",
         "runtimes/win7-x86/native/sni.dll"
+      ]
+    },
+    "Sakura.AspNetCore.Mvc.PagedList/2.0.6": {
+      "sha512": "VeRo8KRNoDnwMBhwCAw5Zbt+iKCo1mMfXrZlkoJ0l448GxBJrRhDZD/hAkjNkmTBAGR04wAzpglT5ciasEp37g==",
+      "type": "package",
+      "path": "Sakura.AspNetCore.Mvc.PagedList/2.0.6",
+      "files": [
+        "Sakura.AspNetCore.Mvc.PagedList.2.0.6.nupkg.sha512",
+        "Sakura.AspNetCore.Mvc.PagedList.nuspec",
+        "lib/net451/Sakura.AspNetCore.Mvc.PagedList.dll",
+        "lib/net451/Sakura.AspNetCore.Mvc.PagedList.xml",
+        "lib/netstandard1.6/Sakura.AspNetCore.Mvc.PagedList.dll",
+        "lib/netstandard1.6/Sakura.AspNetCore.Mvc.PagedList.xml"
+      ]
+    },
+    "Sakura.AspNetCore.PagedList.Abstractions/2.0.0": {
+      "sha512": "oUlEi6NRtcBM8++U5mUf18B7gTri/dKJdrEvQvNb5Qc1z84IQwk93WTCDTudTDEEst1fbIyhGDsMlzGHUNVYKQ==",
+      "type": "package",
+      "path": "Sakura.AspNetCore.PagedList.Abstractions/2.0.0",
+      "files": [
+        "Sakura.AspNetCore.PagedList.Abstractions.2.0.0.nupkg.sha512",
+        "Sakura.AspNetCore.PagedList.Abstractions.nuspec",
+        "lib/netstandard1.0/Sakura.AspNetCore.PagedList.Abstractions.dll",
+        "lib/netstandard1.0/Sakura.AspNetCore.PagedList.Abstractions.xml"
       ]
     },
     "System.AppContext/4.1.0": {
@@ -10595,7 +10645,8 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.0",
-      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0"
+      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
+      "Sakura.AspNetCore.Mvc.PagedList >= 2.0.6"
     ],
     ".NETCoreApp,Version=v1.0": []
   },
@@ -10649,6 +10700,23 @@
         "runtime": {
           "lib/netcoreapp1.0/dotnet-publish-iis.dll": {}
         }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/1.0.0-preview2-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121",
+          "Microsoft.DotNet.ProjectModel": "1.0.0-rc3-003121",
+          "Microsoft.EntityFrameworkCore.Design": "1.0.0-preview2-final",
+          "Microsoft.Extensions.CommandLineUtils": "1.0.0",
+          "Microsoft.NETCore.App": "1.0.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp1.0/dotnet-ef.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp1.0/dotnet-ef.dll": {}
+        }
       }
     }
   },
@@ -10656,7 +10724,8 @@
     ".NETCoreApp,Version=v1.0": [
       "BundlerMinifier.Core >= 2.0.238",
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",
-      "Microsoft.AspNetCore.Server.IISIntegration.Tools >= 1.0.0-preview2-final"
+      "Microsoft.AspNetCore.Server.IISIntegration.Tools >= 1.0.0-preview2-final",
+      "Microsoft.EntityFrameworkCore.Tools >= 1.0.0-preview2-final"
     ]
   }
 }

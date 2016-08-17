@@ -4,15 +4,20 @@
     ViewData["Title"] = "What Not To Watch";
 }
 
-<h1>What Not To Watch</h1>
+<h1>What Not To Watch</h1><br />
 
 <div class="row">
-    <div class="col-lg-12"> <h2>Write a New Review</h2> </div>
-    <div class="otherText">
+    <div class="homeImgSpan">
+        <img src="~/images/tv.png" class="homeImg" />
+    </div>
+
+    <div class="homeText"> <br />
         There are a lot of great TV Shows out there, but there are even more TV shows that aren't worth your time to watch.
-        Let us know what you think by adding a review! 
+        Let us know what you think by adding a new review or voting on an existing review! 
         But be careful, anyone can vote on the quality of your review and if the vote count reaches "-5" your review will be removed.
     </div><br />
-    <a asp-controller="Reviews" asp-action="Create" class="btn btn-default">Add Review</a>
-    <a asp-controller="Reviews" asp-action="Index" class="btn btn-default">Browse All Reviews</a>
+    <div class="homeBtns">
+        <a asp-controller="Reviews" asp-action="Create" class="btn btn-default">Add Review</a>
+        <a asp-controller="Reviews" asp-action="Index" class="btn btn-default">Browse All Reviews</a>
+    </div>
 </div>
