@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WhatNotToWatch.Models.TVShow>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewData["Title"] = "What Not To Watch";
@@ -30,7 +31,7 @@
                 @Html.ActionLink("Rating", "Index", new { sortOrder = ViewData["RatingSortParam"] })
             </th>
             <th class="centerCol">
-                @Html.DisplayNameFor(model => model.Review)
+                Review
             </th>
             <th class="centerCol">
                 @Html.ActionLink("Votes for Review", "Index", new { sortOrder = ViewData["VoteSortParam"] })
