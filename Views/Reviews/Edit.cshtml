@@ -9,23 +9,25 @@
     <h1> Vote on Review </h1>
 
     <p>
-        @Html.LabelFor(m => m.Name) @Model.Name
+        <label>Name</label> @Model.Name
     </p>
 
     <p>
-        @Html.LabelFor(m => m.Genre) @Model.Genre
+        <label>Genre</label> @Model.Genre
     </p>
 
     <p>
-        @Html.LabelFor(m => m.Rating) @Model.Rating
+        <label>Rating</label> @Model.Rating
     </p>
 
     <p>
-        @Html.LabelFor(m => m.Review) @Model.Review
+        <label>Review</label> @Model.Review
     </p><br>
 
     @using (Html.BeginForm())
     {
+        <input type="text" name="ID" value="@Model.ID" class="hide" />
+
         <div class="otherText">
             Sometimes TV shows aren't great, and sometimes reviews of TV shows aren't great either. Tell us what you think of this review!
         </div>

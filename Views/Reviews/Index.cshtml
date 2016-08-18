@@ -1,5 +1,4 @@
-﻿@model IEnumerable<WhatNotToWatch.Models.TVShow>
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+﻿@model WhatNotToWatch.ViewModels.BrowseReviewsViewModel
 
 @{
     ViewData["Title"] = "What Not To Watch";
@@ -22,23 +21,23 @@
     <table class="table">
         <tr>
             <th class="centerCol">
-                @Html.ActionLink("TV Show Name", "Index", new { sortOrder = ViewData["NameSortParam"] })
+                <a asp-action="Index" asp-route-sortOrder="@Model.NameSortParam">TV Show Name</a> 
             </th>
             <th class="centerCol">
-                @Html.ActionLink("Genre", "Index", new { sortOrder = ViewData["GenreSortParam"] })
+                <a asp-action="Index" asp-route-sortOrder="@Model.GenreSortParam">Genre</a> 
             </th>
             <th class="centerCol">
-                @Html.ActionLink("Rating", "Index", new { sortOrder = ViewData["RatingSortParam"] })
+                <a asp-action="Index" asp-route-sortOrder="@Model.RatingSortParam">Rating</a> 
             </th>
             <th class="centerCol">
                 Review
             </th>
             <th class="centerCol">
-                @Html.ActionLink("Votes for Review", "Index", new { sortOrder = ViewData["VoteSortParam"] })
+                <a asp-action="Index" asp-route-sortOrder="@Model.VoteSortParam">Votes for Review</a> 
             </th>
         </tr>
 
-        @foreach (var tvshow in Model)
+        @foreach (var tvshow in Model.Shows)
         {
             <tr>
                 <td class="showNameCol">

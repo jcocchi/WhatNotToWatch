@@ -1,15 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using WhatNotToWatch.Models;
-using WhatNotToWatch.Services;
-using System;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.Text;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using WhatNotToWatch.App_Code;
 
 namespace WhatNotToWatch.Controllers
 {

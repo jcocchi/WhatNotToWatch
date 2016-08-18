@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using WhatNotToWatch.ViewModels;
 
 namespace WhatNotToWatch.Controllers
 {
@@ -24,10 +25,12 @@ namespace WhatNotToWatch.Controllers
 
         public IActionResult Index(string sortOrder, string searchString)
         {
-            ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["GenreSortParam"] = sortOrder == "Genre" ? "genre_desc" : "Genre";
-            ViewData["RatingSortParam"] = sortOrder == "rating_desc" ? "Rating" : "rating_desc";
-            ViewData["VoteSortParam"] = sortOrder == "vote_desc" ? "Vote" : "vote_desc";
+            var model = new BrowseReviewsViewModel();
+
+            model.NameSortParam = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            model.GenreSortParam = sortOrder == "Genre" ? "genre_desc" : "Genre";
+            model.RatingSortParam = sortOrder == "rating_desc" ? "Rating" : "rating_desc";
+            model.VoteSortParam = sortOrder == "vote_desc" ? "Vote" : "vote_desc";
 
             var shows = from s in _tvShowData.GetAll() select s;
 
@@ -64,7 +67,9 @@ namespace WhatNotToWatch.Controllers
                     break;
             }
 
-            return View(shows.ToList());
+            model.Shows = shows.ToList();
+
+            return View(model);
         }
 
         [HttpGet]
@@ -74,10 +79,17 @@ namespace WhatNotToWatch.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(TVShow tvShow)
+        public async Task<IActionResult> Create(CreateShowViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var tvShow = new TVShow();
+
+                // Store attributes from the model in the new show
+                tvShow.Name = model.Name;
+                tvShow.Genre = model.Genre;
+                tvShow.Review = model.Review;
+                
                 // Calculate "Rating" by calling to MS Cognitve Services Text Analytics API 
                 String results = await MakeRequest(tvShow.Review);
                 System.Diagnostics.Debug.WriteLine("RESULTS: " + results);
@@ -207,7 +219,7 @@ namespace WhatNotToWatch.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(TVShow model)
+        public IActionResult Details(DetailsViewModel model)
         {
             if (model == null)
             {
@@ -228,14 +240,13 @@ namespace WhatNotToWatch.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(TVShow input)
+        public IActionResult Edit(EditViewModel model)
         {
-            var tvShow = _tvShowData.Get(input.ID);
-            ModelValidationState isValid = ModelState.GetValidationState("Vote");
+            var tvShow = _tvShowData.Get(model.ID);
 
-            if (tvShow != null && isValid.Equals(ModelValidationState.Valid))
+            if(ModelState.IsValid)
             {
-                tvShow.Vote = input.Vote;
+                tvShow.Vote = model.Vote;
 
                 if (tvShow.Vote <= -5)
                 {
