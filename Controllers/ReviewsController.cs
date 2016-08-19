@@ -79,6 +79,7 @@ namespace WhatNotToWatch.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateShowViewModel model)
         {
             if (ModelState.IsValid)
@@ -240,6 +241,7 @@ namespace WhatNotToWatch.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(EditViewModel model)
         {
             var tvShow = _tvShowData.Get(model.ID);

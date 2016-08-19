@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Add TV Show Review </title>
+    <title> What Not To Watch - Add TV Show Review </title>
 </head>
 <body>
     <h1>Add TV Show Review</h1>
@@ -18,19 +18,19 @@
         <form asp-controller="Reviews" asp-action="Create" method="post">
             <div class="createShowTable">
                 <p>
-                    <label>Name</label><span class="required">* &nbsp;</span>
+                    <label asp-for="Name"></label><span class="required">* &nbsp;</span>
                     <input type="text" asp-for="Name" /><br />
-                    <span class="required">@Html.ValidationMessageFor(m => m.Name)</span>
+                    <span asp-validation-for="Name" class="required"></span>
                 </p>
 
                 <p>
-                    <label>Genre</label> &nbsp;&nbsp;
+                    <label asp-for="Genre"></label> &nbsp;&nbsp;
                     @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))<br />
-                    <span class="required">@Html.ValidationMessageFor(m => m.Genre)</span>
+                    <span asp-validation-for="Genre" class="required"></span>
                 </p>
 
                 <p>
-                    <label>Rating</label>
+                    <label asp-for="Rating"></label>
                     <span class="ratingSpan">
                         Thinking of numbers is hard, so we'll do it for you! <br />
                         Your rating will be auto generated based on your review by the <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="_blank">Text Analyitics API</a> from Microsoft Cognitive Services.
@@ -39,9 +39,9 @@
                 </p>
 
                 <p>
-                    <label>Review</label> <span class="required">* &nbsp;</span>
+                    <label asp-for="Review"></label> <span class="required">* &nbsp;</span>
                     <textarea asp-for="Review"></textarea><br />
-                    <span class="required">@Html.ValidationMessageFor(m => m.Review)</span>
+                    <span asp-validation-for="Review" class="required"></span>
                 </p>
             </div>
 

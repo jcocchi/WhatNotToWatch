@@ -3,25 +3,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Vote on Review </title>
+    <title> What Not To Watch - Vote on Review </title>
 </head>
 <body>
     <h1> Vote on Review </h1>
 
     <p>
-        <label>Name</label> @Model.Name
+        <label asp-for="Name"></label> @Model.Name
     </p>
 
     <p>
-        <label>Genre</label> @Model.Genre
+        <label asp-for="Genre"></label> @Model.Genre
     </p>
 
     <p>
-        <label>Rating</label> @Model.Rating
+        <label asp-for="Rating"></label> @Model.Rating
     </p>
 
     <p>
-        <label>Review</label> @Model.Review
+        <label asp-for="Review"></label> @Model.Review
     </p><br>
 
     <form asp-controller="Reviews" asp-action="Edit" method="post">
