@@ -8,19 +8,19 @@
     <h1> @Model.Name </h1>
 
     <p>
-        @Html.LabelFor(m => m.Name) @Model.Name
+        <label>Name</label> @Model.Name
     </p>
 
     <p>
-        @Html.LabelFor(m => m.Genre) @Model.Genre
+        <label>Genre</label> @Model.Genre
     </p>
 
     <p>
-        @Html.LabelFor(m => m.Rating) @Model.Rating
+        <label>Rating</label> @Model.Rating
     </p>
 
     <p>
-        @Html.LabelFor(m => m.Review) @Model.Review
+        <label>Review</label> @Model.Review
     </p><br>
 
     <a asp-action="Index" class="btn btn-default">Browse All Reviews</a> 

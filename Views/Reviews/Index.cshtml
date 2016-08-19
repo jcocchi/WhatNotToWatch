@@ -7,56 +7,55 @@
 <h1>Browse Reviews</h1>
 
 <div class="col-lg-12"> <br />
-    @using (Html.BeginForm())
-    {
-        <p>
-            <span class="otherText"> Find reviews by show name: </span> @Html.TextBox("SearchString") &nbsp;
-            <input type="submit" value="Search" class="btn btn-default" /> &nbsp;
-            <a asp-controller="Reviews" asp-action="Create" class="btn btn-default">Add Review</a> &nbsp;
-            <a asp-controller="Home" asp-action="Index" class="btn btn-default">Back to Home</a>
-        </p>
-        <br />
-    }
+   <form asp-controller="Reviews" asp-action="Index" method="post">
+      <p>
+          <span class="otherText"> Find reviews by show name: </span> @Html.TextBox("SearchString") &nbsp;
+          <input type="submit" value="Search" class="btn btn-default" /> &nbsp;
+          <a asp-controller="Reviews" asp-action="Create" class="btn btn-default">Add Review</a> &nbsp;
+          <a asp-controller="Home" asp-action="Index" class="btn btn-default">Back to Home</a>
+      </p>
+      <br />
+   </form>
 
-    <table class="table">
-        <tr>
-            <th class="centerCol">
-                <a asp-action="Index" asp-route-sortOrder="@Model.NameSortParam">TV Show Name</a> 
-            </th>
-            <th class="centerCol">
-                <a asp-action="Index" asp-route-sortOrder="@Model.GenreSortParam">Genre</a> 
-            </th>
-            <th class="centerCol">
-                <a asp-action="Index" asp-route-sortOrder="@Model.RatingSortParam">Rating</a> 
-            </th>
-            <th class="centerCol">
-                Review
-            </th>
-            <th class="centerCol">
-                <a asp-action="Index" asp-route-sortOrder="@Model.VoteSortParam">Votes for Review</a> 
-            </th>
-        </tr>
+   <table class="table">
+       <tr>
+           <th class="centerCol">
+               <a asp-action="Index" asp-route-sortOrder="@Model.NameSortParam">TV Show Name</a>
+           </th>
+           <th class="centerCol">
+               <a asp-action="Index" asp-route-sortOrder="@Model.GenreSortParam">Genre</a>
+           </th>
+           <th class="centerCol">
+               <a asp-action="Index" asp-route-sortOrder="@Model.RatingSortParam">Rating</a>
+           </th>
+           <th class="centerCol">
+               Review
+           </th>
+           <th class="centerCol">
+               <a asp-action="Index" asp-route-sortOrder="@Model.VoteSortParam">Votes for Review</a>
+           </th>
+       </tr>
 
-        @foreach (var tvshow in Model.Shows)
-        {
-            <tr>
-                <td class="showNameCol">
-                    @Html.DisplayFor(modelItem => tvshow.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => tvshow.Genre)
-                </td>
-                <td class="centerCol">
-                    @Html.DisplayFor(modelItem => tvshow.Rating)
-                </td>
-                <td class="reviewCol">
-                    @Html.DisplayFor(modelItem => tvshow.Review)
-                </td>
-                <td class="votesCol">
-                    <a asp-action="Edit" asp-route-id="@tvshow.ID">@tvshow.Vote</a>
-                </td>
-            </tr>
-        }
-    </table>
+       @foreach (var tvshow in Model.Shows)
+       {
+           <tr>
+               <td class="showNameCol">
+                   @tvshow.Name
+               </td>
+               <td>
+                   @tvshow.Genre
+               </td>
+               <td class="centerCol">
+                   @tvshow.Rating
+               </td>
+               <td class="reviewCol">
+                   @tvshow.Review
+               </td>
+               <td class="votesCol">
+                   <a asp-action="Edit" asp-route-id="@tvshow.ID">@tvshow.Vote</a>
+               </td>
+           </tr>
+       }
+   </table>
 </div>
 

@@ -24,26 +24,26 @@
         <label>Review</label> @Model.Review
     </p><br>
 
-    @using (Html.BeginForm())
-    {
+    <form asp-controller="Reviews" asp-action="Edit" method="post">
         <input type="text" name="ID" value="@Model.ID" class="hide" />
 
         <div class="otherText">
             Sometimes TV shows aren't great, and sometimes reviews of TV shows aren't great either. Tell us what you think of this review!
         </div>
         <div class="voting">
-            
+
             <input asp-for="Vote" type="radio" name="vote" value=@(Model.Vote + 1) />
             <img src="~/images/ThumbsUp.png" class="votingImage" /><br /><br />
-           
+
             <input asp-for="Vote" type="radio" name="vote" value=@(Model.Vote - 1) />
             <img src="~/images/ThumbsDown.png" class="votingImage" />
         </div>
 
-        <div><br />
+        <div>
+            <br />
             <input type="submit" value="Submit" class="btn btn-default" /> &nbsp;
             <a asp-action="Index" class="btn btn-default">Back</a>
         </div>
-    }
+    </form>
 </body>
 </html>
